@@ -1,0 +1,9 @@
+@import url('../assets/fonts/font.css');
+
+html {
+  overflow-y: auto;
+}
+
+#app {
+  font-family: HYWenHei;
+}

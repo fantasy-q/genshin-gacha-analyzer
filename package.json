@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "fontmin": "node scripts/compressFont.js",
+    "start": "vue-cli-service serve",
+    "serve": "node scripts/compressFont.js && vue-cli-service serve",
+    "build": "node scripts/compressFont.js && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "fontmin": "^0.9.8",
     "vue": "^2.6.11",
     "vuetify": "^2.4.0"
   },

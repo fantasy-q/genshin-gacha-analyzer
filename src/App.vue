@@ -1,16 +1,19 @@
 <template>
   <v-app>
-    <LoadPage />
+    <Load />
+    <Merge />
   </v-app>
 </template>
 
 <script>
-import LoadPage from './views/LoadPage'
+import Load from './views/Load'
+import Merge from './views/Merge'
 export default {
   name: 'App',
-  components: { LoadPage },
+  components: { Load, Merge },
   data: () => ({
-    file: null
+    file: null,
+    
   })
 }
 </script>

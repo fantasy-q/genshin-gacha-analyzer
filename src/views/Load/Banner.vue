@@ -16,7 +16,9 @@
       <v-row v-bind="vRowProps">
         <v-col v-bind="vColProps">
           合并多个抽卡记录文件
-          <v-btn v-bind="vBtnProps"> 请点击这里 </v-btn>
+          <v-btn v-bind="vBtnProps" @click="toMerge">
+            请点击这里
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -49,7 +51,12 @@ export default {
         fontSize: '0.875rem'
       }
     }
-  })
+  }),
+  methods: {
+    toMerge() {
+      this.$emit('toMerge')
+    }
+  }
 }
 </script>
 

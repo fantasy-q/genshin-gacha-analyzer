@@ -10,22 +10,22 @@
       @drop.prevent="drop"
     >
       <input v-bind="inputProps" @change="fileSelect" />
-      <v-card-title class="justify-center">
+      <v-card-title v-bind="vCardTitleProps">
         <v-icon color="info" size="48">mdi-inbox-outline</v-icon>
       </v-card-title>
       <v-card-title v-bind="vCardTitleProps">
         点击选择抽卡记录导出文件或将文件拖拽到此区域
       </v-card-title>
-      <v-card-title v-bind="vCardTitleProps">
+      <v-card-subtitle v-bind="vCardSubtitleProps">
         ( 注：文件的后缀应为.xlsx )
-      </v-card-title>
+      </v-card-subtitle>
     </v-card>
   </v-hover>
 </template>
 
 <script>
 export default {
-  name: 'Dragger',
+  name: 'UploadDragger',
   data: () => ({
     file: null,
     isDrag: false,
@@ -46,9 +46,15 @@ export default {
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     },
     vCardTitleProps: {
-      class: 'justify-center pa-0',
+      class: 'justify-center my-2 pa-2',
       style: {
         fontSize: '1rem'
+      }
+    },
+    vCardSubtitleProps: {
+      class: 'pa-0 my-2',
+      style: {
+        textAlign: 'center'
       }
     }
   }),

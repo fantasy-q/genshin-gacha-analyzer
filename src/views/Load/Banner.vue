@@ -54,7 +54,7 @@ export default {
   }),
   methods: {
     toMerge() {
-      this.$emit('toMerge')
+      this.$store.dispatch('toMerge')
     }
   }
 }

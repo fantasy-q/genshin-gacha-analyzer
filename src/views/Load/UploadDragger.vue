@@ -27,7 +27,6 @@
 export default {
   name: 'UploadDragger',
   data: () => ({
-    file: null,
     isDrag: false,
     vCardProps: {
       width: 650,
@@ -41,7 +40,7 @@ export default {
     inputProps: {
       hidden: true,
       type: 'file',
-      ref: 'input',
+      ref: 'loadUpload',
       accept:
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     },
@@ -60,7 +59,7 @@ export default {
   }),
   methods: {
     click() {
-      this.$refs.input.click()
+      this.$refs.loadUpload.click()
     },
     drag(e) {
       switch (e.type) {
@@ -75,12 +74,10 @@ export default {
       }
     },
     drop(e) {
-      this.file = e.dataTransfer.files[0]
-      console.log(this.file)
+      this.$store.dispatch('loadFile', e.dataTransfer.files[0])
     },
     fileSelect(e) {
-      this.file = e.target.files[0]
-      console.log(this.file)
+      this.$store.dispatch('loadFile', e.target.files[0])
     }
   },
   computed: {

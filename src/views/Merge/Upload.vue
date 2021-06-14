@@ -12,7 +12,6 @@
 export default {
   name: 'Upload',
   data: () => ({
-    files: null,
     inputProps: {
       hidden: true,
       type: 'file',
@@ -32,9 +31,7 @@ export default {
       this.$refs.mergeUpload.click()
     },
     fileSelect(e) {
-      this.files = e.target.files
-      this.$emit('files', this.files)
-      console.log(this.files)
+      this.$store.dispatch('appendFiles', e.target.files)
     }
   }
 }

@@ -3,9 +3,13 @@
     <!-- Banner -->
     <Banner />
     <!-- Upload -->
-    <Upload @files="getFiles" />
+    <Upload />
     <!-- Files -->
-    <File v-for="(file, index) in files" :key="index" :file="file" />
+    <File
+      v-for="(file, index) in this.$store.getters.files"
+      :key="index"
+      :file="file"
+    />
     <!-- Warning -->
     <Warning />
   </div>
@@ -21,11 +25,6 @@ export default {
   components: { Banner, Upload, File, Warning },
   data: () => ({
     files: null
-  }),
-  methods: {
-    getFiles(files) {
-      this.files = files
-    }
-  }
+  })
 }
 </script>

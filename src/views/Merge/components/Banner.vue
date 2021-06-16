@@ -18,7 +18,6 @@ export default {
 </script>
 
 <style scoped>
-/* v-deep */
 .v-alert >>> .v-alert__content {
   color: black;
   text-align: center;

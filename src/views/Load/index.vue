@@ -10,9 +10,10 @@
 </template>
 
 <script>
-import Banner from './Banner.vue'
-import Dragger from './UploadDragger.vue'
+import Banner from './components/Banner.vue'
+import Dragger from './components/Dragger.vue'
 import Warning from '@/components/Warning.vue'
+
 export default {
   name: 'LoadPage',
   components: { Banner, Dragger, Warning },

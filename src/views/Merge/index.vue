@@ -4,27 +4,21 @@
     <Banner />
     <!-- Upload -->
     <Upload />
-    <!-- Files -->
-    <File
-      v-for="(file, index) in this.$store.getters.files"
-      :key="index"
-      :file="file"
-    />
+    <!-- FileList -->
+    <FileList />
     <!-- Warning -->
     <Warning />
   </div>
 </template>
 
 <script>
-import Banner from './Banner.vue'
-import Upload from './Upload.vue'
-import File from './FileAlert.vue'
+import Banner from './components/Banner.vue'
+import Upload from './components/Upload.vue'
+import FileList from './components/FileList.vue'
 import Warning from '@/components/Warning.vue'
 export default {
   name: 'LoadPage',
-  components: { Banner, Upload, File, Warning },
-  data: () => ({
-    files: null
-  })
+  components: { Banner, Upload, FileList, Warning },
+  data: () => ({})
 }
 </script>

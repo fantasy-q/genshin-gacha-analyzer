@@ -3,7 +3,7 @@
     <v-card
       v-bind="vCardProps"
       class="my-5 mx-auto pa-10"
-      :class="{ 'on-hover': hover || dragover }"
+      :class="{ 'on-hover': hover || isDragover }"
       @click="click"
       @dragover.prevent="drag"
       @dragleave.prevent="drag"
@@ -24,10 +24,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'UploadDragger',
   data: () => ({
-    isDrag: false,
+    isDragover: false,
     vCardProps: {
       width: 650,
       ripple: false,
@@ -58,31 +60,29 @@ export default {
     }
   }),
   methods: {
+    ...mapActions(['load']),
     click() {
       this.$refs.loadUpload.click()
+    },
+    drop(e) {
+      this.load(e.dataTransfer.files[0])
+    },
+    fileSelect(e) {
+      this.load(e.target.files[0])
     },
     drag(e) {
       switch (e.type) {
         case 'dragover':
-          this.isDrag ? null : (this.isDrag = true)
+          if (!this.isDragover) {
+            this.isDragover = true
+          }
           break
         case 'dragleave':
-          this.isDrag = false
+          this.isDragover = false
           break
         default:
           break
       }
-    },
-    drop(e) {
-      this.$store.dispatch('loadFile', e.dataTransfer.files[0])
-    },
-    fileSelect(e) {
-      this.$store.dispatch('loadFile', e.target.files[0])
-    }
-  },
-  computed: {
-    dragover() {
-      return this.isDrag
     }
   }
 }
@@ -91,9 +91,11 @@ export default {
 <style scoped>
 .v-card:not(.on-hover) {
   border: 1px dashed #d9d9d9;
+    transition: all .2s ease-in;
 }
 .v-card.on-hover {
   border: 1px dashed #40a9ff;
+  transition: all .2s ease-in;
 }
 .v-card:before {
   background-color: transparent;

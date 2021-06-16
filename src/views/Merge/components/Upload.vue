@@ -12,6 +12,7 @@
 export default {
   name: 'Upload',
   data: () => ({
+    mergeUpload: null,
     inputProps: {
       hidden: true,
       type: 'file',
@@ -26,12 +27,16 @@ export default {
       class: 'text-capitalize rounded-sm'
     }
   }),
+  mounted() {
+    this.mergeUpload = this.$refs.mergeUpload
+  },
   methods: {
     input() {
-      this.$refs.mergeUpload.click()
+      this.mergeUpload.click()
     },
     fileSelect(e) {
-      this.$store.dispatch('appendFiles', e.target.files)
+      this.$store.dispatch('update', e.target.files)
+      this.mergeUpload.value = null
     }
   }
 }

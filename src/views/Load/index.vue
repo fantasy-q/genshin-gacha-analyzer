@@ -1,7 +1,7 @@
 <template>
   <div id="load">
     <!-- Banner -->
-    <Banner  />
+    <Banner />
     <!-- Dragger -->
     <Dragger />
     <!-- Warning -->
@@ -16,11 +16,6 @@ import Warning from '@/components/Warning.vue'
 
 export default {
   name: 'LoadPage',
-  components: { Banner, Dragger, Warning },
-  data: () => ({
-    methods: {
-
-    }
-  })
+  components: { Banner, Dragger, Warning }
 }
 </script>

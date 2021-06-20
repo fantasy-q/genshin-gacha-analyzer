@@ -16,9 +16,9 @@ import Banner from './components/Banner.vue'
 import Upload from './components/Upload.vue'
 import FileList from './components/FileList.vue'
 import Warning from '@/components/Warning.vue'
+
 export default {
   name: 'LoadPage',
-  components: { Banner, Upload, FileList, Warning },
-  data: () => ({})
+  components: { Banner, Upload, FileList, Warning }
 }
 </script>

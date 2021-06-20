@@ -73,6 +73,7 @@ this.$refs.mergeUpload.value = null
 问题：但点击删除按钮，对应文件删除，但 v-alert 被删了两个
 解决无效：不使用 dismissible，再在 alert 里面创建按钮绑定 click 进行操作
 原因：因为用 v-for 绑定 state 已经相当于将数据和 DOM 绑定了，所以 click 事件只需 dispatch 即可
+补充：查到一个类似的问题，好像真正的原因和 key 绑定为 index 有关。(StackOverflow)[https://stackoverflow.com/questions/64467929/vuetify-v-alert-incorrectly-dismissing-sibling-when-transition-is-applied]，在 `store.js` 的 Mutation 中给每个 File 对象增加一个 UniqueID，确实解决了
 
 ### 2
 需求：各个方面想少些点代码，想在 data 中调用 computed

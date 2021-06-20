@@ -1,21 +1,28 @@
 <template>
-  <v-alert v-bind="vAlertProps" ref="fileAlert">
-    <v-container class="pa-0">
-      <v-row no-gutters>
-        <v-col>
-          <div>{{ file.name }}</div>
-          <div>{{ file.name }}</div>
-        </v-col>
-        <v-col cols="auto">
+  <div>
+    <v-alert v-bind="vAlertProps" ref="fileAlert">
+      <!-- <v-container class="pa-0"> -->
+      <!-- <v-row no-gutters> -->
+      <!-- <v-col> -->
+      <div>{{ file.name }}</div>
+      <div>{{ file.name }}</div>
+      <!-- </v-col> -->
+      <!-- <v-col cols="auto" class="align-center">
           <v-btn v-bind="vBtnProps">
-            <v-icon @click="deleteFile">
+            <v-icon @click="deleteFile" right>
               mdi-delete-off-outline
             </v-icon>
           </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-alert>
+        </v-col> -->
+      <!-- </v-row> -->
+      <!-- </v-container> -->
+      <v-btn v-bind="vBtnProps">
+        <v-icon @click="deleteFile" right>
+          mdi-delete-off-outline
+        </v-icon>
+      </v-btn>
+    </v-alert>
+  </div>
 </template>
 
 <script>
@@ -32,6 +39,8 @@ export default {
     vAlertProps: {
       type: 'success',
       icon: 'mdi-check-circle-outline',
+      // dismissible: true,
+      closeIcon: 'mdi-delete-off-outline',
       width: 555,
       text: true,
       tile: true,
@@ -40,7 +49,7 @@ export default {
     },
     vBtnProps: {
       icon: true,
-      class: 'float-right'
+      color: 'success'
     }
   }),
   methods: {

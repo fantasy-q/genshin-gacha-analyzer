@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="show">
     <h1>ShowPage</h1>
   </div>
 </template>

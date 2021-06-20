@@ -1,11 +1,14 @@
 <template>
-  <v-alert v-bind="vAlertProps" ref="fileAlert">
-    <div>{{ file.name }}</div>
-    <div>{{ file.name }}</div>
+  <v-alert v-bind="vAlertProps" ref="fileAlert" @input="deleteFile">
+    <div style="margin-bottom: 0.5rem">{{ file.name }}</div>
+    <div style="font-size: 0.875rem">{{ timeRange }}</div>
   </v-alert>
 </template>
 
 <script>
+import readFile from '../scripts/readFile'
+import uploadItem from '../scripts/uploadItem'
+
 export default {
   name: 'FileAlert',
   props: {
@@ -16,6 +19,7 @@ export default {
     }
   },
   data: () => ({
+    timeRange: null,
     vAlertProps: {
       color: 'success',
       icon: 'mdi-check-circle-outline',
@@ -27,7 +31,17 @@ export default {
       dismissible: true,
       class: 'mx-auto my-2'
     }
-  })
+  }),
+  methods: {
+    deleteFile() {
+      this.$store.dispatch('delete', this.file)
+    }
+  },
+  beforeMount() {
+    readFile(this.file).then(r => {
+      this.timeRange = uploadItem(r)
+    })
+  }
 }
 </script>
 

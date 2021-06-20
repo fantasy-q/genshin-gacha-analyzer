@@ -30,6 +30,7 @@ export default {
   name: 'UploadDragger',
   data: () => ({
     isDragover: false,
+    loadUpload: null,
     vCardProps: {
       width: 650,
       ripple: false,
@@ -59,10 +60,13 @@ export default {
       }
     }
   }),
+  mounted() {
+    this.fileInput = this.$refs.loadUpload
+  },
   methods: {
     ...mapActions(['load']),
     click() {
-      this.$refs.loadUpload.click()
+      this.fileInput.click()
     },
     drop(e) {
       this.load(e.dataTransfer.files[0])
@@ -73,9 +77,7 @@ export default {
     drag(e) {
       switch (e.type) {
         case 'dragover':
-          if (!this.isDragover) {
-            this.isDragover = true
-          }
+          if (!this.isDragover) this.isDragover = true
           break
         case 'dragleave':
           this.isDragover = false
@@ -91,11 +93,11 @@ export default {
 <style scoped>
 .v-card:not(.on-hover) {
   border: 1px dashed #d9d9d9;
-    transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 .v-card.on-hover {
   border: 1px dashed #40a9ff;
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 .v-card:before {
   background-color: transparent;

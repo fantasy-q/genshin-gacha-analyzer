@@ -1,6 +1,10 @@
 <template>
   <div>
-    <File v-for="(file, index) in files" :key="index" :file="file" />
+    <File
+      v-for="file in files"
+      :key="`${file.id}-${file.name}`"
+      :file="file"
+    />
     <div class="d-flex justify-center">
       <v-tooltip v-bind="vTooltipProps">
         <template v-slot:activator="{ on }">
@@ -15,8 +19,8 @@
               >
                 <v-icon left> mdi-upload-multiple </v-icon>
                 <span style="letter-spacing: normal">
-                  合并生成新文件</span
-                >
+                  合并生成新文件
+                </span>
               </v-btn>
             </v-hover>
           </div>
@@ -28,14 +32,13 @@
 </template>
 
 <script>
-import File from './FileAlert.vue'
+import File from './File.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'FileList',
   components: { File },
   data: () => ({
-    hasDeleted: false,
     vBtnProps: {
       outlined: true,
       disabled: null

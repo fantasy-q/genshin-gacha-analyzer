@@ -3,7 +3,7 @@
     <v-btn v-bind="vBtnProps" @click="input">
       <input v-bind="inputProps" @change="fileSelect" />
       <v-icon left> mdi-upload-multiple </v-icon>
-      导入Excel文件
+      <span style="letter-spacing: normal">导入 Excel 文件</span>
     </v-btn>
   </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
   name: 'Upload',
   data: () => ({
-    mergeUpload: null,
+    fileInput: null,
     inputProps: {
       hidden: true,
       type: 'file',
@@ -28,15 +28,15 @@ export default {
     }
   }),
   mounted() {
-    this.mergeUpload = this.$refs.mergeUpload
+    this.fileInput = this.$refs.mergeUpload
   },
   methods: {
     input() {
-      this.mergeUpload.click()
+      this.fileInput.click()
     },
     fileSelect(e) {
       this.$store.dispatch('update', e.target.files)
-      this.mergeUpload.value = null
+      this.fileInput.value = null
     }
   }
 }

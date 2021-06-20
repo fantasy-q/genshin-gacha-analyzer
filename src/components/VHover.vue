@@ -73,7 +73,7 @@ export default {
     items: [
       {
         title: 'New Releases',
-        text: `It's New Release Friday`,
+        text: 'It\'s New Release Friday',
         subtext: 'Newly released songs. Updated daily.',
         img: 'https://images.unsplash.com/photo-1429514513361-8fa32282fd5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80'
       },

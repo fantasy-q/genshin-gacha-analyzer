@@ -11,9 +11,9 @@ export default {
     vBannerProps: {
       color: 'info',
       text: true,
-      class: 'my-5'
-    }
-  })
+      class: 'my-5',
+    },
+  }),
 }
 </script>
 

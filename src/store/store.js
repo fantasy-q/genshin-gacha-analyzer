@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as file from '@/store/modules/file'
+import * as file from '@/store/file'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    file
+    file,
   },
   state: {
     toMerge: false,
@@ -15,6 +15,6 @@ export default new Vuex.Store({
     TO_MERGE: (state) => { state.toMerge = true },
   },
   actions: {
-    toMerge: ({ commit }) => { commit('TO_MERGE') }
-  }
+    toMerge: ({ commit }) => { commit('TO_MERGE') },
+  },
 })

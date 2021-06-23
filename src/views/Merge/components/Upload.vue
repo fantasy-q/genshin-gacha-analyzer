@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import createUploadItem from '../uploadItem'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Upload',
   data: () => ({
@@ -19,25 +22,37 @@ export default {
       multiple: true,
       ref: 'mergeUpload',
       accept:
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     },
     vBtnProps: {
       color: 'info',
       depressed: true,
-      class: 'text-capitalize rounded-sm'
-    }
+      class: 'text-capitalize rounded-sm',
+    },
   }),
   mounted() {
     this.fileInput = this.$refs.mergeUpload
   },
   methods: {
+    ...mapActions(['update']),
     input() {
       this.fileInput.click()
     },
     fileSelect(e) {
-      this.$store.dispatch('update', e.target.files)
-      this.fileInput.value = null
-    }
-  }
+      const files = e.target.files
+      for (const file of files) {
+        createUploadItem(file)
+          .then(uploadItem => {
+            this.update(uploadItem)
+          })
+          .catch(uploadItem => {
+            this.update(uploadItem)
+          })
+          .finally(() => {
+            this.fileInput.value = null
+          })
+      }
+    },
+  },
 }
 </script>

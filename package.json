@@ -43,7 +43,16 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "semi": [
+        "warn",
+        "never"
+      ],
+      "comma-dangle": [
+        "warn",
+        "always-multiline"
+      ]
+    }
   },
   "browserslist": [
     "> 1%",

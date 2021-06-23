@@ -32,8 +32,8 @@ export default {
     file: {
       type: File,
       default: null,
-      require: true
-    }
+      require: true,
+    },
   },
   data: () => ({
     vAlertProps: {
@@ -45,18 +45,18 @@ export default {
       text: true,
       tile: true,
       outlined: true,
-      class: 'mx-auto my-2'
+      class: 'mx-auto my-2',
     },
     vBtnProps: {
       icon: true,
-      color: 'success'
-    }
+      color: 'success',
+    },
   }),
   methods: {
     deleteFile() {
       this.$store.dispatch('delete', this.file)
-    }
-  }
+    },
+  },
 }
 </script>
 

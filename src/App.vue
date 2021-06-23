@@ -20,8 +20,8 @@ export default {
     },
     merge() {
       return this.$store.state.toMerge
-    }
-  }
+    },
+  },
 }
 </script>
 

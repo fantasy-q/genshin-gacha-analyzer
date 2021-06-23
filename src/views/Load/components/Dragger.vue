@@ -37,28 +37,28 @@ export default {
       tile: true,
       flat: true,
       style: {
-        backgroundColor: '#fafafa'
-      }
+        backgroundColor: '#fafafa',
+      },
     },
     inputProps: {
       hidden: true,
       type: 'file',
       ref: 'loadUpload',
       accept:
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     },
     vCardTitleProps: {
       class: 'justify-center my-2 pa-2',
       style: {
-        fontSize: '1rem'
-      }
+        fontSize: '1rem',
+      },
     },
     vCardSubtitleProps: {
       class: 'pa-0 my-2',
       style: {
-        textAlign: 'center'
-      }
-    }
+        textAlign: 'center',
+      },
+    },
   }),
   mounted() {
     this.fileInput = this.$refs.loadUpload
@@ -85,8 +85,8 @@ export default {
         default:
           break
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,9 +1,9 @@
 <template>
   <div>
     <File
-      v-for="file in files"
-      :key="`${file.id}-${file.name}`"
-      :file="file"
+      v-for="item in files"
+      :key="`${item.id}-${item.file.name}`"
+      :item="item"
     />
     <div class="d-flex justify-center">
       <v-tooltip v-bind="vTooltipProps">
@@ -41,20 +41,20 @@ export default {
   data: () => ({
     vBtnProps: {
       outlined: true,
-      disabled: null
+      disabled: null,
     },
     vTooltipProps: {
       bottom: true,
-      disabled: null
-    }
+      disabled: null,
+    },
   }),
   computed: {
-    ...mapGetters(['files'])
+    ...mapGetters(['files']),
   },
   updated() {
     this.vBtnProps.disabled = this.files.length <= 1 ? true : false
     this.vTooltipProps.disabled = this.files.length > 1 ? true : false
-  }
+  },
 }
 </script>
 

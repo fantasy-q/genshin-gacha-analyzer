@@ -1,6 +1,6 @@
 module.exports = {
   transpileDependencies: [
-    'vuetify'
+    'vuetify',
   ],
   chainWebpack: config => {
     config
@@ -9,5 +9,5 @@ module.exports = {
         args[0].title = '原神祈愿记录分析工具'
         return args
       })
-  }
+  },
 }

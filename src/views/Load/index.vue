@@ -16,6 +16,6 @@ import Warning from '@/components/Warning.vue'
 
 export default {
   name: 'LoadPage',
-  components: { Banner, Dragger, Warning }
+  components: { Banner, Dragger, Warning },
 }
 </script>

@@ -32,31 +32,31 @@ export default {
     vBannerProps: {
       color: 'info',
       text: true,
-      class: 'my-5'
+      class: 'my-5',
     },
     vBtnProps: {
       color: 'info',
       text: true,
       height: 'auto',
-      ripple: false
+      ripple: false,
     },
     vRowProps: {
       dense: true,
-      justify: 'center'
+      justify: 'center',
     },
     vColProps: {
       cols: 'auto',
       class: 'black--text',
       style: {
-        fontSize: '0.875rem'
-      }
-    }
+        fontSize: '0.875rem',
+      },
+    },
   }),
   methods: {
     toMerge() {
       this.$store.dispatch('toMerge')
-    }
-  }
+    },
+  },
 }
 </script>
 

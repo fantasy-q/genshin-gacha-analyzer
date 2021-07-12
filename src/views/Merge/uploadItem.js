@@ -1,4 +1,5 @@
 import dateFormat from 'dateformat'
+import { SHEET_NAMES } from '@/scripts/consts'
 
 export default function createUploadItem(file) {
   return new Promise((resolve, reject) => {
@@ -20,9 +21,9 @@ export default function createUploadItem(file) {
             const workbook = XLSX.read(fileData, { type: 'array' })
             // 格式化数据
             const formattedData = formatData(XLSX, workbook)
+            uploadItem.data = formattedData
             // 获取时间范围
             const range = findRange(formattedData)
-            uploadItem.data = formattedData
             uploadItem.range = range
             uploadItem.message = createMessage(range)
             uploadItem.type = MESSAGE_TYPE[1]
@@ -55,6 +56,7 @@ function formatData(XLSX, workbook) {
     if (SHEET_NAMES.includes(sheetName)) {
       const sheet = sheets[sheetName]
       const json = XLSX.utils.sheet_to_json(sheet)
+      // console.log(json)
       formattedData[sheetName] = json
     } else {
       throw new Error(`cannot parse sheetName ${sheetName}`)
@@ -77,6 +79,7 @@ function findRange(formattedData) {
     if (Object.hasOwnProperty.call(data, sheetNames)) {
       const sheet = data[sheetNames]
       const date = sheet.map(item => new Date(item.时间))
+      // dates = dates.concat(date)
       dates.push(...date)
     }
   }
@@ -94,13 +97,6 @@ function createMessage(range) {
   const timeTo = dateFormat(to, 'yyyy-mm-dd')
   return `时间范围：${timeFrom} 至 ${timeTo} (共 ${count} 次祈愿)`
 }
-
-const SHEET_NAMES = [
-  '新手祈愿',
-  '常驻祈愿',
-  '角色活动祈愿',
-  '武器活动祈愿',
-]
 
 const MESSAGE_TYPE = [
   { name: 'error', no: 0 },

@@ -7,9 +7,9 @@ let nextID = 1
 
 const mutations = {
   LOAD: (state, file) => { state.loadFile = file },
-  UPDATE: (state, payload) => {
-    payload.id = nextID++
-    state.mergefiles.push(payload)
+  UPDATE: (state, item) => {
+    item.id = nextID++
+    state.mergefiles.push(item)
   },
   DELETE: (state, id) => {
     state.mergefiles = state.mergefiles.filter(item => item.id !== id)
@@ -18,7 +18,7 @@ const mutations = {
 
 const actions = {
   load: ({ commit }, file) => { commit('LOAD', file) },
-  update: ({ commit }, payload) => { commit('UPDATE', payload) },
+  update: ({ commit }, item) => { commit('UPDATE', item) },
   delete: ({ commit }, id) => { commit('DELETE', id) },
 }
 

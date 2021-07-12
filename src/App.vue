@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Load v-if="!uploaded && !merge" />
+  <Merge v-else-if="merge" />
+  <Show v-else-if="uploaded" />
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent } from "vue";
+import Load from "./views/Load/index.vue";
+import Merge from "./views/Merge/index.vue";
+import Show from "./views/Show/index.vue";
 
-export default {
-  name: 'App',
+export default defineComponent({
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Load,
+    Merge,
+    Show,
+  },
+  computed: {
+    uploaded() {
+      // return this.$store.getters.file;
+      return true;
+    },
+    merge() {
+      return this.$store.state.toMerge;
+    },
+  },
+});
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: HYWenHei, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* color: #2c3e50; */
+  overflow: auto;
 }
 </style>
